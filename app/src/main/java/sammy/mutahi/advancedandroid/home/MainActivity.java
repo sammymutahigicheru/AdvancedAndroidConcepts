@@ -1,8 +1,10 @@
-package sammy.mutahi.advancedandroid;
+package sammy.mutahi.advancedandroid.home;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import sammy.mutahi.advancedandroid.R;
 
 public class MainActivity extends AppCompatActivity {
 
