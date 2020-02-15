@@ -12,7 +12,9 @@ import dagger.Component;
 * Handles the injection
 * */
 @Singleton
-@Component(modules = {ApplicationModule.class})
+@Component(modules = {ApplicationModule.class,
+ActivityBindingModule.class})
 public interface ApplicationComponent {
 
+    void inject(MyApplication myApplication);
 }
