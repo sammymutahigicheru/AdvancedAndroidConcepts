@@ -2,6 +2,8 @@ package sammy.mutahi.advancedandroid.di;
 
 import android.app.Activity;
 
+import com.bluelinelabs.conductor.Controller;
+
 import javax.inject.Inject;
 
 import sammy.mutahi.advancedandroid.base.BaseActivity;
@@ -17,5 +19,12 @@ public class Injector {
 
     public static void clearComponent(Activity activity) {
         ActivityInjector.get(activity).clear(activity);
+    }
+
+    public static void inject(Controller controller){
+        ScreenInjector.get(controller.getActivity()).inject(controller);
+    }
+    public static void clearComponent(Controller controller){
+        ScreenInjector.get(controller.getActivity()).clear(controller);
     }
 }

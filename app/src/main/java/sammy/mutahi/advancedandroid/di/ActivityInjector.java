@@ -15,6 +15,7 @@ import sammy.mutahi.advancedandroid.base.MyApplication;
 
 /*
 * Injects a map that we defined earlier
+* Doesnt need activity scope since its injected only once when the application is created
 * */
 public class ActivityInjector {
     private final Map<Class<? extends Activity>, Provider<AndroidInjector.Factory<? extends Activity>>> activityInjectors;
@@ -31,6 +32,7 @@ public class ActivityInjector {
         String instanceId = ((BaseActivity) activity).getInstanceId();
         if (cache.containsKey(instanceId)){
             ((AndroidInjector<Activity>) cache.get(instanceId)).inject(activity);
+            return;
         }
         AndroidInjector.Factory<Activity> injectorFactory =
                 (AndroidInjector.Factory<Activity>) activityInjectors.get(activity.getClass()).get();
