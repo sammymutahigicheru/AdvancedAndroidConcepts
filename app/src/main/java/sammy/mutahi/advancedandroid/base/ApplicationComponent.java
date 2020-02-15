@@ -1,6 +1,6 @@
 package sammy.mutahi.advancedandroid.base;
 
-import android.app.Application;
+
 
 import javax.inject.Singleton;
 
@@ -12,7 +12,7 @@ import dagger.Component;
 * Handles the injection
 * */
 @Singleton
-@Component(modules = {Application.class})
+@Component(modules = {ApplicationModule.class})
 public interface ApplicationComponent {
 
 }
