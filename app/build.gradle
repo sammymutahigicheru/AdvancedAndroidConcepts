@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.jakewharton.butterknife'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -51,8 +52,8 @@ dependencies {
     //timber dependency
     implementation "com.jakewharton.timber:timber:$timberVersion"
 // butterknife dependency
-    implementation "com.jakewharton:butterknife:$butterknifeVersion"
-    annotationProcessor "com.jakewharton:butterknife-compiler:$butterknifeVersion"
+    implementation 'com.jakewharton:butterknife:10.2.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.1'
 
     implementation "com.bluelinelabs:conductor:$conductorVersion"
     testImplementation 'junit:junit:4.12'
