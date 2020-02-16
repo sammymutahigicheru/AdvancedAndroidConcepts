@@ -42,6 +42,7 @@ ext {
     materialVersion = '1.0.0'
     timberVersion = '4.5.1'
     butterknifeVersion = '8.8.1'
+    mockitoVersion = '2.10.0'
 }
 
 task clean(type: Delete) {

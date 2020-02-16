@@ -55,6 +55,9 @@ dependencies {
     implementation 'com.jakewharton:butterknife:10.2.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.1'
 
+    //mockito
+    testImplementation "org.mockito:mockito-core:$mockitoVersion"
+
     implementation "com.bluelinelabs:conductor:$conductorVersion"
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.0'
