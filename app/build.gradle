@@ -40,6 +40,8 @@ dependencies {
     implementation "com.jakewharton.rxrelay2:rxrelay:$rxRelayVersion"
 
     implementation "com.google.android.material:material:$materialVersion"
+    //time library
+    implementation "com.jakewharton.threetenabp:threetenabp:$threeTenAbpVersion"
 
     implementation "com.bluelinelabs:conductor:$conductorVersion"
     testImplementation 'junit:junit:4.12'
