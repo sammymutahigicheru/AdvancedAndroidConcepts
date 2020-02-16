@@ -48,6 +48,12 @@ dependencies {
     //time library
     implementation "com.jakewharton.threetenabp:threetenabp:$threeTenAbpVersion"
 
+    //timber dependency
+    implementation "com.jakewharton.timber:timber:$timberVersion"
+// butterknife dependency
+    implementation "com.jakewharton:butterknife:$butterknifeVersion"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$butterknifeVersion"
+
     implementation "com.bluelinelabs:conductor:$conductorVersion"
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.0'

@@ -15,7 +15,7 @@ public class RepoRequester {
 
         this.repoService = repoService;
     }
-    Single<List<Repo>> getTrendingRepos(){
+    public Single<List<Repo>> getTrendingRepos(){
         return repoService.getTrendingRepos()
                 .map(trendingReposResponse -> trendingReposResponse.repos())
                 .subscribeOn(Schedulers.io());
