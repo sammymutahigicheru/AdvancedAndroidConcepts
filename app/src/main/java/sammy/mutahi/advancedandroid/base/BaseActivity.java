@@ -20,10 +20,13 @@ import javax.inject.Inject;
 import sammy.mutahi.advancedandroid.R;
 import sammy.mutahi.advancedandroid.di.Injector;
 import sammy.mutahi.advancedandroid.di.ScreenInjector;
+import sammy.mutahi.advancedandroid.ui.ScreenNavigator;
 
 public abstract class BaseActivity extends AppCompatActivity {
     @Inject
     ScreenInjector screenInjector;
+    @Inject
+    ScreenNavigator screenNavigator;
     public static final String INSTANCE_ID_KEY = "instance_id";
     public String instaceId;
     //similar to fragment manager in fragments,needs a container
@@ -43,6 +46,7 @@ public abstract class BaseActivity extends AppCompatActivity {
             throw new IllegalArgumentException("Activity Must have a container with id screen_container");
         }
         router = Conductor.attachRouter(this,screenContainer,savedInstanceState);
+        screenNavigator.initWithRouter(router,initialScreen());
         monitorBackStack();
         super.onCreate(savedInstanceState);
     }
@@ -59,6 +63,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        screenNavigator.clear();
         if (isFinishing()){
             Injector.clearComponent(this);
         }
@@ -70,6 +75,8 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     @LayoutRes
     protected abstract int layoutRes();
+
+    protected abstract Controller initialScreen();
 
     private void monitorBackStack(){
         router.addChangeListener(new ControllerChangeHandler.ControllerChangeListener() {
@@ -94,4 +101,12 @@ public abstract class BaseActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onBackPressed() {
+        //finishes the activity
+        if (!screenNavigator.pop()){
+            super.onBackPressed();
+        }
+
+    }
 }
