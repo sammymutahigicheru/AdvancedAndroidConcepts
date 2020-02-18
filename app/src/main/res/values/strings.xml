@@ -6,4 +6,5 @@
     <string name="contributors_label">Contributers:</string>
     <string name="api_error_single_repo">Error Loading Single Repo</string>
     <string name="api_error_contributors">Error Loading Contributers</string>
+    <string name="content_description_avatar_image">Avatar Image</string>
 </resources>

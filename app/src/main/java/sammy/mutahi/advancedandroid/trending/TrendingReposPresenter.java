@@ -6,17 +6,20 @@ import sammy.mutahi.advancedandroid.data.RepoRepository;
 import sammy.mutahi.advancedandroid.data.RepoRequester;
 import sammy.mutahi.advancedandroid.di.ScreenScope;
 import sammy.mutahi.advancedandroid.model.Repo;
+import sammy.mutahi.advancedandroid.ui.ScreenNavigator;
 
 @ScreenScope
 public class TrendingReposPresenter implements RepoAdapter.RepoClickedListener {
     private final TrendingReposViewModel trendingReposViewModel;
     private RepoRepository repoRepository;
+    private ScreenNavigator screenNavigator;
 
     @Inject
-    TrendingReposPresenter(TrendingReposViewModel trendingReposViewModel, RepoRepository repoRepository){
+    TrendingReposPresenter(TrendingReposViewModel trendingReposViewModel, RepoRepository repoRepository, ScreenNavigator screenNavigator){
 
         this.trendingReposViewModel = trendingReposViewModel;
         this.repoRepository = repoRepository;
+        this.screenNavigator = screenNavigator;
         //load data upon request
         loadData();
     }
@@ -34,6 +37,6 @@ public class TrendingReposPresenter implements RepoAdapter.RepoClickedListener {
 
     @Override
     public void onRepoClicked(Repo repo) {
-
+        screenNavigator.goToRepoDetails(repo.owner().login(),repo.name());
     }
 }
