@@ -1,6 +1,7 @@
 package sammy.mutahi.advancedandroid.base;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,14 @@ public abstract class BaseController extends Controller {
     private final CompositeDisposable disposable = new CompositeDisposable();
     private boolean injected = false;
     private Unbinder unBinder;
+
+    public BaseController(){
+        super();
+    }
+
+    public BaseController(Bundle bundle){
+        super(bundle);
+    }
 
     @Override
     protected void onContextAvailable(@NonNull Context context) {
