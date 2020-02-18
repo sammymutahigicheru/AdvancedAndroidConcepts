@@ -2,6 +2,7 @@ package sammy.mutahi.advancedandroid.trending;
 
 import javax.inject.Inject;
 
+import sammy.mutahi.advancedandroid.data.RepoRepository;
 import sammy.mutahi.advancedandroid.data.RepoRequester;
 import sammy.mutahi.advancedandroid.di.ScreenScope;
 import sammy.mutahi.advancedandroid.model.Repo;
@@ -9,19 +10,19 @@ import sammy.mutahi.advancedandroid.model.Repo;
 @ScreenScope
 public class TrendingReposPresenter implements RepoAdapter.RepoClickedListener {
     private final TrendingReposViewModel trendingReposViewModel;
-    private final RepoRequester repoRequester;
+    private RepoRepository repoRepository;
 
     @Inject
-    TrendingReposPresenter(TrendingReposViewModel trendingReposViewModel,RepoRequester repoRequester){
+    TrendingReposPresenter(TrendingReposViewModel trendingReposViewModel, RepoRepository repoRepository){
 
         this.trendingReposViewModel = trendingReposViewModel;
-        this.repoRequester = repoRequester;
+        this.repoRepository = repoRepository;
         //load data upon request
         loadData();
     }
 
     private void loadData() {
-        repoRequester.getTrendingRepos()
+        repoRepository.getTrendingRepos()
                 //tell the requester that we are still loading
         .doOnSubscribe(__ ->trendingReposViewModel.loadingUpdated().accept(true))
                 //on any event be it data retrieved successfully or throwable

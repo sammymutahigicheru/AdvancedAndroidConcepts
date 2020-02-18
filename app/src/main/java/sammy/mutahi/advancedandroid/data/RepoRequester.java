@@ -20,4 +20,9 @@ public class RepoRequester {
                 .map(trendingReposResponse -> trendingReposResponse.repos())
                 .subscribeOn(Schedulers.io());
     }
+
+    public Single<Repo> getRepo(String owner,String name ){
+        return repoService.getRepo(owner,name)
+                .subscribeOn(Schedulers.io());
+    }
 }
