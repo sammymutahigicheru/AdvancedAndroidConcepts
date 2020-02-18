@@ -30,8 +30,8 @@ public interface  RepoDetailsComponent extends AndroidInjector<RepoDetailsContro
 
         @Override
         public void seedInstance(RepoDetailsController instance) {
-            buildRepoOwner(instance.getArgs().getString(RepoDetailsController.REPO_OWNER));
-            buildRepoName(instance.getArgs().getString(RepoDetailsController.REPO_NAME));
+            buildRepoOwner(instance.getArgs().getString(RepoDetailsController.REPO_OWNER_KEY));
+            buildRepoName(instance.getArgs().getString(RepoDetailsController.REPO_NAME_KEY));
         }
     }
 }
