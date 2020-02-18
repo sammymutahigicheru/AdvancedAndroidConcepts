@@ -10,7 +10,7 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "sammy.mutahi.advancedAndroid.test.CustomTestRunner"
     }
     buildTypes {
         release {
@@ -57,6 +57,10 @@ dependencies {
 
     //mockito
     testImplementation "org.mockito:mockito-core:$mockitoVersion"
+
+    //dagger
+
+    androidTestAnnotationProcessor "com.google.dagger:dagger-compiler:$daggerVersion"
 
     implementation "com.bluelinelabs:conductor:$conductorVersion"
     testImplementation 'junit:junit:4.12'

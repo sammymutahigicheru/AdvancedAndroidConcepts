@@ -13,13 +13,11 @@ public class MyApplication extends Application {
     //get activity Injector
     @Inject
     ActivityInjector activityInjector;
-    private ApplicationComponent applicationComponent;
+    protected ApplicationComponent applicationComponent;
     @Override
     public void onCreate() {
         super.onCreate();
-        applicationComponent = DaggerApplicationComponent.builder()
-                .applicationModule(new ApplicationModule(this))
-                .build();
+        applicationComponent = initComponent();
         applicationComponent.inject(this);
 
         if (BuildConfig.DEBUG){
@@ -30,6 +28,12 @@ public class MyApplication extends Application {
             * */
             Timber.plant(new Timber.DebugTree());
         }
+    }
+
+    protected ApplicationComponent initComponent(){
+        return DaggerApplicationComponent.builder()
+                .applicationModule(new ApplicationModule(this))
+                .build();
     }
 
     public ActivityInjector getActivityInjector() {
