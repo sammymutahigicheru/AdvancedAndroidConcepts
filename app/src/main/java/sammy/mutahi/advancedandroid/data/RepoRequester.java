@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import io.reactivex.Single;
 import io.reactivex.schedulers.Schedulers;
+import sammy.mutahi.advancedandroid.model.Contributor;
 import sammy.mutahi.advancedandroid.model.Repo;
 
 public class RepoRequester {
@@ -15,14 +16,15 @@ public class RepoRequester {
 
         this.repoService = repoService;
     }
-    public Single<List<Repo>> getTrendingRepos(){
+   Single<List<Repo>> getTrendingRepos(){
         return repoService.getTrendingRepos()
-                .map(trendingReposResponse -> trendingReposResponse.repos())
-                .subscribeOn(Schedulers.io());
+                .map(trendingReposResponse -> trendingReposResponse.repos());
     }
 
-    public Single<Repo> getRepo(String owner,String name ){
-        return repoService.getRepo(owner,name)
-                .subscribeOn(Schedulers.io());
+   Single<Repo> getRepo(String owner,String name ){
+        return repoService.getRepo(owner,name);
+    }
+    Single<List<Contributor>> getContributors(String url){
+        return repoService.getContributors(url);
     }
 }
